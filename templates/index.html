@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Engagement Analytics</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; background: #0f172a; color: #e2e8f0; padding: 1.5rem; }
+    h1 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #f8fafc; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .card { background: #1e293b; border-radius: 8px; padding: 1rem; }
+    .card.full { grid-column: 1 / -1; }
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 1rem; }
+    .kpi { background: #1e293b; border-radius: 8px; padding: 1rem; border-left: 3px solid #3b82f6; }
+    .kpi .label { font-size: 0.75rem; color: #94a3b8; text-transform: uppercase; }
+    .kpi .value { font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem; }
+    .card h2 { font-size: 0.9rem; color: #94a3b8; margin-bottom: 0.75rem; }
+    canvas { max-height: 260px; }
+    .ab-result { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem; }
+    .ab-group { flex: 1; min-width: 120px; background: #0f172a; padding: 0.75rem; border-radius: 6px; }
+    .ab-group .rate { font-size: 1.25rem; color: #3b82f6; font-weight: 700; }
+    .sig { margin-top: 0.75rem; padding: 0.5rem; border-radius: 4px; font-size: 0.85rem; }
+    .sig.yes { background: #064e3b; color: #6ee7b7; }
+    .sig.no { background: #451a03; color: #fcd34d; }
+    table.heatmap { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+    table.heatmap th, table.heatmap td { padding: 0.35rem; text-align: center; border: 1px solid #334155; }
+    table.heatmap th { background: #0f172a; color: #94a3b8; }
+    @media (max-width: 768px) {
+      .grid, .kpis { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Content Engagement & Retention Analytics</h1>
+  <div class="kpis" id="kpis"></div>
+  <div class="grid">
+    <div class="card"><h2>Daily Active Users</h2><canvas id="dauChart"></canvas></div>
+    <div class="card"><h2>Genre Engagement</h2><canvas id="genreChart"></canvas></div>
+    <div class="card"><h2>Churn by Genre</h2><canvas id="churnChart"></canvas></div>
+    <div class="card"><h2>A/B Test — Notifications</h2><div id="abTest"></div></div>
+    <div class="card"><h2>MAU Trend</h2><canvas id="mauChart"></canvas></div>
+    <div class="card"><h2>Premium vs Free</h2><canvas id="premiumChart"></canvas></div>
+    <div class="card full"><h2>Genre Completion Funnel</h2><canvas id="funnelChart"></canvas></div>
+    <div class="card full"><h2>Retention Cohort Heatmap</h2><div id="heatmap"></div></div>
+  </div>
+  <script src="/static/dashboard.js"></script>
+</body>
+</html>
